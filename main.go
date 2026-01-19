@@ -64,6 +64,22 @@ func getPlayerCellNumber(mapField [3][3]string) string {
 	}
 }
 
+func makeMove(mapField [3][3]string, cellNumber string, isZeroNow bool) [3][3]string {
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if mapField[i][j] == cellNumber {
+				if isZeroNow {
+					mapField[i][j] = "O"
+				} else {
+					mapField[i][j] = "X"
+				}
+				return mapField
+			}
+		}
+	}
+	return mapField
+}
+
 func main() {
 	var mapField = [3][3]string{
 		{"1", "2", "3"},
