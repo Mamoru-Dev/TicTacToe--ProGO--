@@ -80,6 +80,74 @@ func makeMove(mapField [3][3]string, cellNumber string, isZeroNow bool) [3][3]st
 	return mapField
 }
 
+func hasWinner(mapField [3][3]string) bool {
+	// row check X
+	for i := 0; i < 3; i++ {
+		win := true
+		for j := 0; j < 3; j++ {
+			if mapField[i][j] != "X" {
+				win = false
+			}
+		}
+		if win {
+			return true
+		}
+	}
+	// row check O
+	for i := 0; i < 3; i++ {
+		win := true
+		for j := 0; j < 3; j++ {
+			if mapField[i][j] != "O" {
+				win = false
+			}
+		}
+		if win {
+			return true
+		}
+	}
+	// column check X
+	for j := 0; j < 3; j++ {
+		win := true
+		for i := 0; i < 3; i++ {
+			if mapField[i][j] != "X" {
+				win = false
+			}
+		}
+		if win {
+			return true
+		}
+	}
+	// column check O
+	for j := 0; j < 3; j++ {
+		win := true
+		for i := 0; i < 3; i++ {
+			if mapField[i][j] != "O" {
+				win = false
+			}
+		}
+		if win {
+			return true
+		}
+	}
+	// diagonals check X
+	if mapField[0][0] == "X" && mapField[1][1] == "X" && mapField[2][2] == "X" {
+		return true
+	}
+	if mapField[0][2] == "X" && mapField[1][1] == "X" && mapField[2][0] == "X" {
+		return true
+	}
+
+	// diagonals check X
+	if mapField[0][0] == "X" && mapField[1][1] == "X" && mapField[2][2] == "X" {
+		return true
+	}
+	if mapField[0][2] == "X" && mapField[1][1] == "X" && mapField[2][0] == "X" {
+		return true
+	}
+
+	return false
+}
+
 func main() {
 	var mapField = [3][3]string{
 		{"1", "2", "3"},
