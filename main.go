@@ -28,16 +28,22 @@ func printMap(mapField [3][3]string) {
 	}
 }
 
+func isMoveCorrect(mapField [3][3]string, cellNumber string) bool {
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if mapField[i][j] == cellNumber {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func main() {
-	// var mapField = [3][3]string{
-	// 	{"1", "2", "3"},
-	// 	{"4", "5", "6"},
-	// 	{"7", "8", "9"},
-	// }
-	mapField := [3][3]string{
-		{"1", "2", "O"},
+	var mapField = [3][3]string{
+		{"1", "2", "3"},
 		{"4", "5", "6"},
-		{"X", "8", "9"},
+		{"7", "8", "9"},
 	}
 	printMap(mapField)
 
