@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // ANSI escape‑коды
 const (
@@ -37,6 +39,29 @@ func isMoveCorrect(mapField [3][3]string, cellNumber string) bool {
 		}
 	}
 	return false
+}
+
+func containsDigit(s string) bool {
+	for _, r := range s { // Iterates over runes (Unicode code points)
+		if r >= '0' && r <= '9' {
+			return true
+		}
+	}
+	return false
+}
+
+func getPlayerCellNumber(mapField [3][3]string) string {
+	for {
+		var input string
+		fmt.Scan(&input)
+		if !containsDigit(input) {
+			fmt.Println("Неверный ввод. Пожалуйста, введите цифру от 1 до 9.")
+		} else if isMoveCorrect(mapField, input) {
+			return input
+		} else {
+			fmt.Println("Неверный ввод. Пожалуйста, введите цифру пустой ячейки.")
+		}
+	}
 }
 
 func main() {
